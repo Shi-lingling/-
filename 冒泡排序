@@ -1,0 +1,23 @@
+#include <stdio.h>        //include  包括  stdio.h是头文件 .h是头文件的拓展名
+int main()                           
+{
+	int i,j,t,a[10];                   //定义变量数组基本类型
+	printf("Please input numbers: ");
+	for(i=0;i<10;i++){
+		scanf("%d",&a[i]);             //从键盘输入要排序的数组
+	}	
+	for(i=0;i<10;i++){
+		for(j=i+1;j<=9;j++){
+			if(a[i]>a[j]){            //如果后一个数比前一个数大利用中间变量t实现俩值互换
+				t=a[i];
+				a[i]=a[j];
+				a[j]=t;
+			}
+		}
+	}
+	printf("Please output numbers: ");
+	for(i=0;i<=9;i++){
+		printf("%-3d",a[i]);
+	}
+	printf("\n");
+}
