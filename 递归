@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<iostream>
+using namespace std;
+ 
+int n;
+int a[101];//记录排列
+int vis[101];//标记数组
+int tot;//排列数
+ 
+void f(int k)//k为当前位置
+{
+	if(k==n+1)//K=n+1说明a[n]处的元素已经选完了，此次递归可以结束，打印排列
+	{
+		tot ++;
+		for(int j=1;j<=n;j++)
+			cout << a[j] << " ";
+		cout << endl;
+	}
+ 
+	for(int i=1;i<=n;i++)//从1~n中选择一个数
+	{
+		if(vis[i]==0)//如果没有选择过
+		{
+			a[k] = i;//选择它，并且放到第i位置
+			vis[i] = 1;//标记为已经选择过该元素
+			f(k+1);//进行递归
+			vis[i] = 0;//回溯
+		}
+	}
+}
+ 
+int main()
+{
+	cout << "请输入n：";
+	cin >> n;
+	for(int i=1;i<=n;i++)
+		vis[i] = 0;
+	f(1);
+	cout << "排列数为：" << tot << endl;
+	return 0;
+}
